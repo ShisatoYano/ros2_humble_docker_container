@@ -5,6 +5,9 @@ services:
     container_name: ros2_humble_docker_container
     build: 
       context: .
+      args:
+        - UID=1000
+        - GID=1000
       dockerfile: Dockerfile
     volumes:
       - ros_bag:/home/dev-user/humble_ws/ros_bag
