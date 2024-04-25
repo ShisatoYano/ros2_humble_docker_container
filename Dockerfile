@@ -43,7 +43,7 @@ RUN apt update && apt upgrade -y \
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/dev-user/.bashrc
 RUN printenv | grep -i ROS
 
-# install turlesim packages
+# install turtlesim packages
 RUN apt update && apt install -y ros-humble-turtlesim
 RUN ros2 pkg executables turtlesim
 
