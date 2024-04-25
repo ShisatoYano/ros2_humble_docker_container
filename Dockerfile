@@ -29,21 +29,16 @@ RUN locale-gen en_US en_US.UTF-8 \
 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
 && export LANG=en_US.UTF-8 \
 && locale
-
 # 2. add ROS 2 apt repository
 RUN apt install -y software-properties-common \
 && add-apt-repository universe
-
 # 3. add ROS 2 GPG key
 RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-
 # 4. add repository to sources list
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
 # 5. install packages
 RUN apt update && apt upgrade -y \
 && apt install -y ros-humble-desktop
-
 # 6. environment setup
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/dev-user/.bashrc
 RUN printenv | grep -i ROS
