@@ -10,7 +10,7 @@ services:
         - GID=1000
       dockerfile: Dockerfile
     volumes:
-      - ros_bag:/home/dev-user/humble_ws/ros_bag
+      - ./ros_bag:/home/dev-user/humble_ws/ros_bag
     environment:
       NVIDIA_VISIBLE_DEVICES: all
       NVIDIA_DRIVER_CAPABILITIES: all
