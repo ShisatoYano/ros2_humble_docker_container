@@ -73,3 +73,7 @@ RUN echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc
 
 # colcon tab completion setup
 RUN echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
+
+# environment variables for gpu setup
+ENV __NV_PRIME_RENDER_OFFLOAD=1
+ENV __GLX_VENDOR_LIBRARY_NAME=nvidia
