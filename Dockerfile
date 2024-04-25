@@ -56,3 +56,12 @@ RUN apt install -y \
 python3-colcon-common-extensions \
 python3-rosdep \
 python3-argcomplete
+# 2. make workspace
+RUN mkdir -p /home/dev-user/humble_ws/src
+RUN cd /home/dev-user/humble_ws \
+&& /bin/bash -c "source /opt/ros/humble/setup.bash" \
+&& rosdep init \
+&& rosdep update \
+&& git clone https://github.com/ros2/examples src/examples -b humble \
+&& colcon build \
+&& /bin/bash -c "source /home/dev-user/humble_ws/install/setup.bash"
