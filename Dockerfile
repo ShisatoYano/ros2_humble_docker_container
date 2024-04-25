@@ -55,7 +55,8 @@ RUN apt update && apt install -y ros-humble-rqt-*
 RUN apt install -y \
 python3-colcon-common-extensions \
 python3-rosdep \
-python3-argcomplete
+python3-argcomplete \
+build-essential
 # 2. make workspace
 RUN mkdir -p /home/dev-user/humble_ws/src
 RUN cd /home/dev-user/humble_ws \
