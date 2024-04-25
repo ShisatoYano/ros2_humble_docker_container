@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   ros:
     container_name: ros2_humble_docker_container
