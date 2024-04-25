@@ -29,3 +29,7 @@ RUN locale-gen en_US en_US.UTF-8 \
 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
 && export LANG=en_US.UTF-8 \
 && locale
+
+# 2. add apt repository of ROS 2
+RUN apt install -y software-properties-common \
+&& add-apt-repository universe
