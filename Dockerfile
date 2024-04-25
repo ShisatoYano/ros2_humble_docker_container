@@ -41,7 +41,6 @@ RUN apt update && apt upgrade -y \
 && apt install -y ros-humble-desktop
 # 6. environment setup
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/dev-user/.bashrc
-RUN printenv | grep -i ROS
 
 # install turtlesim packages
 RUN apt update && apt install -y ros-humble-turtlesim
