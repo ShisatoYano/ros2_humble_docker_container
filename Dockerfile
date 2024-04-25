@@ -66,3 +66,7 @@ RUN cd /home/dev-user/humble_ws \
 && git clone https://github.com/ros2/examples src/examples -b humble \
 && colcon build \
 && /bin/bash -c "source /home/dev-user/humble_ws/install/setup.bash"
+
+# colcon_cd setup
+RUN echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
+RUN echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc
