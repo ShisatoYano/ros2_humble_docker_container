@@ -44,7 +44,6 @@ RUN echo "source /opt/ros/humble/setup.bash" >> /home/dev-user/.bashrc
 
 # install turtlesim packages
 RUN apt update && apt install -y ros-humble-turtlesim
-RUN ros2 pkg executables turtlesim
 
 # install rqt
 RUN apt update && apt install -y ros-humble-rqt-*
@@ -58,13 +57,11 @@ python3-argcomplete \
 build-essential
 # 2. make workspace
 RUN mkdir -p /home/dev-user/humble_ws/src
-RUN cd /home/dev-user/humble_ws \
-&& /bin/bash -c "source /opt/ros/humble/setup.bash" \
-&& rosdep init \
-&& rosdep update \
-&& git clone https://github.com/ros2/examples src/examples -b humble \
-&& colcon build \
-&& /bin/bash -c "source /home/dev-user/humble_ws/install/setup.bash"
+RUN cd /home/dev-user/humble_ws/src \
+&& git clone https://github.com/ros2/examples -b humble \
+&& cd /home/dev-user/humble_ws \
+&& /bin/bash -c "source /opt/ros/humble/setup.bash; rosdep init; rosdep update; colcon build"
+RUN /bin/bash -c "source /home/dev-user/humble_ws/install/setup.bash"
 
 # colcon_cd setup
 RUN echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
