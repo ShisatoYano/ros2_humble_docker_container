@@ -70,3 +70,6 @@ RUN cd /home/dev-user/humble_ws \
 # colcon_cd setup
 RUN echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 RUN echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc
+
+# colcon tab completion setup
+RUN echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
