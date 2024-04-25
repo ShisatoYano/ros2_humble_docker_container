@@ -30,7 +30,7 @@ RUN locale-gen en_US en_US.UTF-8 \
 && export LANG=en_US.UTF-8 \
 && locale
 # 2. add ROS 2 apt repository
-RUN apt install -y software-properties-common \
+RUN apt update && apt install -y software-properties-common \
 && add-apt-repository universe
 # 3. add ROS 2 GPG key
 RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
