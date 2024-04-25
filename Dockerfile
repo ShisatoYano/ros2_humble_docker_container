@@ -49,3 +49,10 @@ RUN ros2 pkg executables turtlesim
 
 # install rqt
 RUN apt update && apt install -y ros-humble-rqt-*
+
+# colcon build setup
+# 1. install build tools
+RUN apt install -y \
+python3-colcon-common-extensions \
+python3-rosdep \
+python3-argcomplete
