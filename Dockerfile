@@ -46,3 +46,6 @@ RUN printenv | grep -i ROS
 # install turlesim packages
 RUN apt update && apt install -y ros-humble-turtlesim
 RUN ros2 pkg executables turtlesim
+
+# install rqt
+RUN apt update && apt install -y ros-humble-rqt-*
