@@ -16,3 +16,9 @@ gnupg2 \
 locales \
 && apt clean \ 
 && rm -rf /var/lib/apt/lists/*
+
+# create user and group
+ARG UID=2000
+ARG GID=2000
+RUN groupadd -g $GID dev-user \
+&& useradd -m -d /home/dev-user -s /bin/bash -u $UID -g $GID dev-user
