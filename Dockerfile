@@ -18,8 +18,8 @@ locales \
 && rm -rf /var/lib/apt/lists/*
 
 # create user and group
-ARG UID=2000
-ARG GID=2000
+ARG UID
+ARG GID
 RUN groupadd -g $GID dev-user \
 && useradd -m -d /home/dev-user -s /bin/bash -u $UID -g $GID dev-user
 
@@ -56,6 +56,7 @@ python3-rosdep \
 python3-argcomplete \
 build-essential
 # 2. make workspace
+USER dev-user
 RUN mkdir -p /home/dev-user/humble_ws/src
 RUN cd /home/dev-user/humble_ws/src \
 && git clone https://github.com/ros2/examples -b humble \
@@ -73,6 +74,3 @@ RUN echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> 
 # environment variables for gpu setup
 ENV __NV_PRIME_RENDER_OFFLOAD=1
 ENV __GLX_VENDOR_LIBRARY_NAME=nvidia
-
-# set user
-USER dev-user
