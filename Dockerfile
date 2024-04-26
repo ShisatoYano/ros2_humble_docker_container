@@ -49,6 +49,13 @@ RUN apt update && apt install -y ros-humble-turtlesim
 # install rqt
 RUN apt update && apt install -y ros-humble-rqt-*
 
+# install Gazebo packages
+RUN apt install -y ros-humble-gazebo-ros-pkgs
+
+# install TurtleBot3 packages
+RUN apt install -y ros-humble-turtlebot3 \
+ros-humble-turtlebot3-msgs
+
 # colcon build setup
 # 1. install build tools
 RUN apt install -y \
@@ -63,9 +70,13 @@ RUN git config --global http.version HTTP/1.1
 RUN mkdir -p /home/dev-user/humble_ws/src
 RUN cd /home/dev-user/humble_ws/src \
 && git clone https://github.com/ros2/examples -b humble \
+&& git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations -b humble-devel \
 && cd /home/dev-user/humble_ws \
-&& /bin/bash -c "source /opt/ros/humble/setup.bash; rosdep init; rosdep update; colcon build"
+&& /bin/bash -c "source /opt/ros/humble/setup.bash; rosdep init; rosdep update; colcon build --symlink-install"
 RUN /bin/bash -c "source /home/dev-user/humble_ws/install/setup.bash"
+
+# turtlebot3 setup
+RUN echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 
 # colcon_cd setup
 RUN echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
