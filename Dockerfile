@@ -57,6 +57,7 @@ python3-argcomplete \
 build-essential
 # 2. make workspace
 USER dev-user
+RUN git config --global http.version HTTP/1.1
 RUN mkdir -p /home/dev-user/humble_ws/src
 RUN cd /home/dev-user/humble_ws/src \
 && git clone https://github.com/ros2/examples -b humble \
