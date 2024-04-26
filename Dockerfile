@@ -14,6 +14,7 @@ curl \
 lsb-release \
 gnupg2 \
 locales \
+gnutls-bin \
 && apt clean \ 
 && rm -rf /var/lib/apt/lists/*
 
@@ -57,6 +58,7 @@ python3-argcomplete \
 build-essential
 # 2. make workspace
 USER dev-user
+# git cofig settings to prevent tls connection timeout
 RUN git config --global http.version HTTP/1.1
 RUN mkdir -p /home/dev-user/humble_ws/src
 RUN cd /home/dev-user/humble_ws/src \
